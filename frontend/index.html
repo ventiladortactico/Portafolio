@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio</title>
+  <meta name="description" content="Portafolio de Joaquín Salgueiro (TSAS). Proyectos web: Empleando, NexoStock, SubeSude. Stack: PHP, MySQL, HTML, CSS, JavaScript.">
+  <meta property="og:title" content="Mi Portafolio - Joaquín Salgueiro">
+  <meta property="og:description" content="Explorá mis proyectos web: Empleando, NexoStock, SubeSude. Desarrollo con PHP, MySQL, HTML, CSS y JavaScript.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/empleando.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="images/empleando.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Mi Portafolio</h1>
+      <nav role="navigation" aria-label="Navegación principal">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre-mi">
+      <div class="container">
+        <h2>Sobre mí</h2>
+        <p>
+          Buenas Buenas, soy Joaquín Salgueiro, TSAS(Tecnico Superior Analista en Sistemas Informáticos) un joven apasionado por la tecnología y la programación. 
+          Aca voy guardando mis proyectos de la universidad, personales y profesionales.
+        </p>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <h2>Proyectos</h2>
+        <div class="grid">
+          <!-- Proyecto 1 -->
+          <div class="card" data-project="1">
+            <img src="images/empleando.png" alt="Proyecto 1" width="1024" height="1024" loading="eager" decoding="async">
+            <div class="card-content">
+              <h3>Empleando</h3>
+              <p>Plataforma web para conectar trabajadores y clientes.</p>
+              <div class="tags">
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Bootstrap</span>
+              </div>
+              <a href="empleando.html" class="btn-primary">Ver más</a>
+            </div>
+          </div>
+          <!-- Proyecto 2 -->
+          <div class="card" data-project="2">
+            <img src="images/NexoStock.jpg" alt="Proyecto 2" width="692" height="455" loading="lazy" decoding="async">
+            <div class="card-content">
+              <h3>NexoStock</h3>
+              <p>Sistema hecho para gestión de stock y facturación.</p>
+              <div class="tags">
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="nexostock.html" class="btn-primary">Ver más</a>
+            </div>
+          </div>
+          <!-- Proyecto 3 -->
+          <div class="card" data-project="3">
+            <img src="images/SubeSude.png" alt="Proyecto 3" width="1024" height="1024" loading="lazy" decoding="async">
+            <div class="card-content">
+              <h3>SubeSude</h3>
+              <p>Sitio Web de contenido para adultos</p>
+              <div class="tags">
+                <span class="tag">Web</span>
+                <span class="tag">Platform</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="subesude.html" class="btn-primary">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p>¿Tenes algún proyecto en mente? ¡Hablame!</p>
+        <div class="contact-info">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=joaquinsalgueiro15@gmail.com&su=Consulta%20desde%20tu%20portafolio&body=Hola%20Joaqu%C3%ADn%2C%0A%0AQuisiera%20contactarme%20contigo%20para%20hablar%20sobre%20un%20proyecto.%0A%0AGracias!" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <span class="icon">📧</span>
+            joaquinsalgueiro15@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 - Mi Portafolio. Hecho con ❤️ y código</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

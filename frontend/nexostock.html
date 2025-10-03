@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexoStock - Detalles del Proyecto</title>
+  <link rel="preload" as="image" href="images/NexoStock.jpg">
+  <meta name="description" content="NexoStock: sistema de gestión de stock y facturación. Tecnologías: PHP, MySQL, HTML, CSS, JavaScript.">
+  <meta property="og:title" content="NexoStock - Proyecto de Joaquín Salgueiro">
+  <meta property="og:description" content="Gestión de productos, movimientos de stock y emisión de comprobantes. Ver tecnologías y galería.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="images/NexoStock.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Mi Portafolio</h1>
+      <nav role="navigation" aria-label="Navegación principal">
+        <a href="index.html#sobre-mi">Sobre mí</a>
+        <a href="index.html#proyectos">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="breadcrumbs">Inicio / Proyectos / NexoStock</div>
+        <h2>NexoStock</h2>
+        <div class="project-hero">
+          <img src="images/NexoStock.jpg" alt="NexoStock" width="692" height="455" loading="eager" decoding="async">
+        </div>
+
+        <p class="project-description">
+          NexoStock es un sistema de gestión de inventario y ventas para PYMEs. Combina autenticación robusta (email verificado y Google), control granular de stock con historial, ventas con trazabilidad y módulos de administración. Está pensado para operar rápido en entorno Windows/WAMP y simplificar tareas diarias como cierre de caja y respaldos con un clic.
+        </p>
+
+        <div class="project-meta">
+          <div class="meta-card">
+            <h3>Tecnologías</h3>
+            <ul>
+              <li><strong>Backend:</strong> PHP (procedural), PDO, sesiones</li>
+              <li><strong>Base de datos:</strong> MySQL</li>
+              <li><strong>Frontend:</strong> PHP con vistas, JavaScript vanilla, CSS propio</li>
+              <li><strong>Email:</strong> PHPMailer</li>
+              <li><strong>OAuth:</strong> Google Sign-In (google/apiclient)</li>
+              <li><strong>Utilidades:</strong> firebase/php-jwt, vlucas/phpdotenv, Guzzle</li>
+              <li><strong>Entorno:</strong> WAMP (Windows), mysqldump para backups</li>
+            </ul>
+          </div>
+          <div class="meta-card">
+            <h3>Características</h3>
+            <ul>
+              <li><strong>Autenticación y roles:</strong> registro estándar, verificación por email, login; rol administrador y usuario.</li>
+              <li><strong>OAuth Google:</strong> alta e inicio de sesión con Google; bienvenida automática.</li>
+              <li><strong>Inventario:</strong> productos, marcas, categorías, proveedores; stock mínimo y unidades/medidas.</li>
+              <li><strong>Ventas:</strong> creación de ventas con items, costos, precio, ganancia; anulación de ventas.</li>
+              <li><strong>Stock:</strong> ajustes con bloqueo de fila, historial de movimientos, validaciones anti stock negativo.</li>
+              <li><strong>Mix y fraccionamiento:</strong> crear productos “mix” con componentes; fraccionar productos restando stock y creando nuevo producto.</li>
+              <li><strong>Administración:</strong> CRUD de usuarios (por admin) con actualización de rol; listado de ventas detalladas.</li>
+              <li><strong>Operación diaria:</strong> cierre de caja por día/usuario.</li>
+              <li><strong>Mantenimiento:</strong> backup/restore de BD desde la app; lectura de logs; configuración persistida en config.json.</li>
+            </ul>
+          </div>
+          <div class="meta-card">
+            <h3>Estado</h3>
+            <p>En desarrollo / Producción</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <h3>Galería</h3>
+          <div class="gallery-grid">
+            <img src="images/nexostock/login.png" alt="NexoStock - Login / Acceso" loading="lazy" decoding="async">
+            <img src="images/nexostock/registro.png" alt="NexoStock - Registro de usuarios" loading="lazy" decoding="async">
+            <img src="images/nexostock/panel_principal.png" alt="NexoStock - Panel principal (usuario)" loading="lazy" decoding="async">
+            <img src="images/nexostock/panel_pincipal_admin.png" alt="NexoStock - Panel principal (administrador)" loading="lazy" decoding="async">
+            <img src="images/nexostock/carga_productos.png" alt="NexoStock - Carga/ABM de productos" loading="lazy" decoding="async">
+            <img src="images/nexostock/configuracion_admin.png" alt="NexoStock - Configuración (administración)" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <a class="btn-primary back-link" href="index.html#proyectos">← Volver a Proyectos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 - Mi Portafolio. Hecho con ❤️ y código</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

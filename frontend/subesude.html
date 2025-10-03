@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SubeSude - Detalles del Proyecto</title>
+  <link rel="preload" as="image" href="images/SubeSude.png">
+  <meta name="description" content="SubeSude: sitio web de contenido para adultos. Tecnologías: PHP, MySQL, HTML, CSS, JavaScript, Bootstrap.">
+  <meta property="og:title" content="SubeSude - Proyecto de Joaquín Salgueiro">
+  <meta property="og:description" content="Sitio web con gestión de usuarios, subida de contenido y categorización.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="images/SubeSude.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Mi Portafolio</h1>
+      <nav role="navigation" aria-label="Navegación principal">
+        <a href="index.html#sobre-mi">Sobre mí</a>
+        <a href="index.html#proyectos">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="breadcrumbs">Inicio / Proyectos / SubeSude</div>
+        <h2>SubeSude</h2>
+        <div class="project-hero">
+          <img src="images/SubeSude.png" alt="SubeSude" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+
+        <p class="project-description">
+          Desarrollé SubeSude, una plataforma de video para adultos con flujo completo: registro con verificación por correo y OAuth de Google, roles y solicitud de creador, subida y gestión de contenido, interacciones sociales (likes, favoritos, seguimiento), analíticas para creadores y gating Premium. Implementé seguridad con sesiones, CSRF y reCAPTCHA, consultas preparadas y validación de archivos. El frontend usa PHP templating, HTML/CSS y JS nativo con UI rápida, paginación y lazy-loading; el backend en PHP con PDO/MySQL, PHPMailer para emails y dotenv para configuración. El resultado es una base sólida, extensible y lista para integrar pagos y más métricas.
+        </p>
+
+        <div class="project-meta">
+          <div class="meta-card">
+            <h3>Tecnologías</h3>
+            <ul>
+              <li><strong>Backend/BD:</strong> PHP (PDO), MySQL</li>
+              <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (Vanilla)</li>
+              <li><strong>Email/OAuth:</strong> PHPMailer, Google API Client (OAuth)</li>
+              <li><strong>Utilidades:</strong> vlucas/phpdotenv, Font Awesome</li>
+              <li><strong>Seguridad:</strong> reCAPTCHA v2</li>
+              <li><strong>Entorno:</strong> WAMP/Apache (estructura PHP)</li>
+            </ul>
+          </div>
+          <div class="meta-card">
+            <h3>Características</h3>
+            <ul>
+              <li><strong>Autenticación:</strong> email/contraseña y OAuth de Google</li>
+              <li><strong>Verificación y anti‑bot:</strong> verificación por correo y reCAPTCHA</li>
+              <li><strong>Roles y acceso:</strong> usuario, creador, admin</li>
+              <li><strong>Creador:</strong> solicitud y aprobación desde panel</li>
+              <li><strong>Subida de medios:</strong> videos, miniaturas y avatares con validación de tipo/tamaño</li>
+              <li><strong>Interacciones:</strong> likes/dislikes, favoritos, seguimiento a creadores</li>
+              <li><strong>Historial:</strong> visualización y guardados</li>
+              <li><strong>Búsqueda y UX:</strong> búsqueda unificada (categorías y creadores) y paginación</li>
+              <li><strong>Premium:</strong> gating de contenido para suscriptores</li>
+              <li><strong>Analíticas:</strong> vistas, likes, seguidores, top videos</li>
+              <li><strong>UI:</strong> responsive con notificaciones, lazy‑loading y modales</li>
+              <li><strong>Gestión:</strong> categorías y tendencias (últimos 30 días)</li>
+            </ul>
+          </div>
+          <div class="meta-card">
+            <h3>Estado</h3>
+            <p>En desarrollo / Producción</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <h3>Galería</h3>
+          <div class="gallery-grid">
+            <img src="https://via.placeholder.com/1200x675/1e293b/ffffff?text=SubeSude+1" alt="SubeSude captura 1 - Pantalla de acceso" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/334155/ffffff?text=SubeSude+2" alt="SubeSude captura 2 - Home/Feed" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/475569/ffffff?text=SubeSude+3" alt="SubeSude captura 3 - Perfil de usuario/creador" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/64748b/ffffff?text=SubeSude+4" alt="SubeSude captura 4 - Subida de contenido" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/0f172a/ffffff?text=SubeSude+5" alt="SubeSude captura 5 - Sistema de categorías/etiquetas" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/0ea5e9/ffffff?text=SubeSude+6" alt="SubeSude captura 6 - Gestión de usuarios/roles" width="1200" height="675" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <a class="btn-primary back-link" href="index.html#proyectos">← Volver a Proyectos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 - Mi Portafolio. Hecho con ❤️ y código</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

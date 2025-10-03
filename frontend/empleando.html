@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empleando - Detalles del Proyecto</title>
+  <link rel="preload" as="image" href="images/empleando.png">
+  <meta name="description" content="Empleando: plataforma web para conectar trabajadores y clientes. Tecnologías: PHP, MySQL, HTML, CSS, JavaScript.">
+  <meta property="og:title" content="Empleando - Proyecto de Joaquín Salgueiro">
+  <meta property="og:description" content="Plataforma web para vincular trabajadores y clientes. Ver tecnologías, características y galería.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="images/empleando.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Mi Portafolio</h1>
+      <nav role="navigation" aria-label="Navegación principal">
+        <a href="index.html#sobre-mi">Sobre mí</a>
+        <a href="index.html#proyectos">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="breadcrumbs">Inicio / Proyectos / Empleando</div>
+        <h2>Empleando</h2>
+        <div class="project-hero">
+          <img src="images/empleando.png" alt="Empleando" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+
+        <p class="project-description">
+          Empleando es una plataforma que conecta clientes con profesionales mediante un flujo simple: los clientes publican solicitudes y los trabajadores se postulan según sus categorías. Implementé el backend en PHP con MySQL utilizando consultas preparadas y sesiones para gestionar la autenticación, y diseñé una interfaz moderna con Bootstrap enfocada en claridad y rapidez. Integré subida y validación de imágenes, perfiles con calificación y un panel de administración para mantener la calidad del contenido. Priorizo la seguridad básica (validación de entradas, manejo de archivos y uso de sentencias preparadas) y una experiencia de usuario fluida con búsquedas y modales. El resultado es un sistema modular y mantenible que resuelve el emparejamiento entre demanda y talento de forma eficiente.
+        </p>
+
+        <div class="project-meta">
+          <div class="meta-card">
+            <h3>Tecnologías</h3>
+            <ul>
+              <li><strong>Backend:</strong> PHP (mysqli), sesiones, respuestas JSON</li>
+              <li><strong>Base de datos:</strong> MySQL</li>
+              <li><strong>Frontend:</strong> HTML5, CSS3, Bootstrap 5, JavaScript</li>
+              <li><strong>Email:</strong> PHPMailer</li>
+              <li><strong>Paquetería:</strong> Composer</li>
+              <li><strong>Entorno:</strong> WAMP/Apache</li>
+              <li><strong>Otros:</strong> Subida/validación de imágenes, consultas preparadas</li>
+            </ul>
+          </div>
+          <div class="meta-card">
+            <h3>Características</h3>
+            <ul>
+              <li><strong>Autenticación:</strong> registro/inicio de sesión con sesiones</li>
+              <li><strong>Perfiles:</strong> cliente y trabajador con edición de dirección, descripción e imagen</li>
+              <li><strong>Matching:</strong> exploración de trabajos por categorías del trabajador</li>
+              <li><strong>Publicación:</strong> creación y gestión de solicitudes de servicio</li>
+              <li><strong>Postulaciones:</strong> envío con control de duplicados e imagen opcional</li>
+              <li><strong>Reseñas:</strong> calificaciones y comentarios a trabajadores</li>
+              <li><strong>Admin:</strong> panel para usuarios, solicitudes, postulaciones, profesiones y reseñas</li>
+              <li><strong>UI/UX:</strong> diseño dark con Bootstrap, modales y animaciones</li>
+            </ul>
+          </div>
+          <div class="meta-card">
+            <h3>Estado</h3>
+            <p>En desarrollo / Producción</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <h3>Galería</h3>
+          <div class="gallery-grid">
+            <img src="https://via.placeholder.com/1200x675/1e293b/ffffff?text=Empleando+1" alt="Empleando captura 1 - Login" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/334155/ffffff?text=Empleando+2" alt="Empleando captura 2 - Home/Inicio" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/475569/ffffff?text=Empleando+3" alt="Empleando captura 3 - Perfil" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/64748b/ffffff?text=Empleando+4" alt="Empleando captura 4 - Búsqueda/Listado" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/0f172a/ffffff?text=Empleando+5" alt="Empleando captura 5 - Detalle" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://via.placeholder.com/1200x675/0ea5e9/ffffff?text=Empleando+6" alt="Empleando captura 6 - Formulario/ABM" width="1200" height="675" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <a class="btn-primary back-link" href="index.html#proyectos">← Volver a Proyectos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 - Mi Portafolio. Hecho con ❤️ y código</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
