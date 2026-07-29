@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joaquín Salgueiro — Full Stack Developer</title>
+<meta name="description" content="Analista en Sistemas & Desarrollador Full Stack. Proyectos: SumaMente, PlataHoy, NexoStock. Posadas, Misiones.">
+<meta property="og:title" content="Joaquín Salgueiro — Full Stack Developer">
+<meta property="og:description" content="Analista en Sistemas & Desarrollador Full Stack">
+<meta property="og:image" content="Imagen1.jpg">
+<meta name="theme-color" content="#0E0E10">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%23D4FF4F'/%3E%3Ctext x='50' y='68' font-family='serif' font-size='52' font-weight='bold' fill='%230E0E10' text-anchor='middle'%3EJS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0E0E10;
+    --ink: #EDE6D6;
+    --accent: #D4FF4F;
+    --muted: #7A776F;
+    --divider: #232325;
+    --card-bg: #141416;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --bg-glass: rgba(14,14,16,0.92);
+    --radius: 4px;
+  }
+  [data-theme="light"] {
+    --bg: #F5F3EF;
+    --ink: #1A1A1A;
+    --accent: #7C3AED;
+    --muted: #8A8680;
+    --divider: #E2DDD6;
+    --card-bg: #FFFFFF;
+    --bg-glass: rgba(245,243,239,0.92);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor.grow { width: 40px; height: 40px; opacity: 0.5; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--divider); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 60px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .theme-toggle {
+    display:flex;align-items:center;justify-content:center;
+    width:34px;height:34px;
+    border:1px solid var(--divider);
+    border-radius:50%;
+    background:transparent;
+    color:var(--muted);
+    cursor:none;
+    transition:color 0.2s, border-color 0.2s;
+  }
+  .theme-toggle:hover { color:var(--accent); border-color:var(--accent); }
+  .theme-toggle, .theme-toggle * { cursor:pointer !important; }
+  .theme-icon { display:block; }
+  .status-pill {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--divider);
+    border-radius: 100px;
+    background: rgba(212,255,79,0.05);
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(212,255,79,0.3);
+    animation: pulse-dot 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--accent), 0 0 12px rgba(212,255,79,0.3); }
+    50% { opacity: 0.5; box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(212,255,79,0.5); }
+  }
+  .status-text {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* NOW TICKER */
+  .ticker-bar {
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+    height: 28px;
+    display: flex; align-items: center;
+    border-bottom: 1px solid var(--divider);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .ticker-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 0 16px 0 40px;
+    white-space: nowrap;
+    border-right: 1px solid var(--divider);
+    line-height: 28px;
+  }
+  .ticker-track {
+    overflow: hidden; flex: 1;
+  }
+  .ticker-inner {
+    display: flex; gap: 60px;
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    animation: ticker-scroll 28s linear infinite;
+  }
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* RIGHT META COLUMN */
+  .meta-col {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .meta-section {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: color 0.3s;
+  }
+  .meta-progress-track {
+    width: 1px; height: 80px;
+    background: var(--divider);
+    position: relative;
+    overflow: hidden;
+  }
+  .meta-progress-fill {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 0%;
+    background: var(--accent);
+    transition: height 0.4s ease;
+  }
+  .meta-clock {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  /* SECTIONS COMMON */
+  section { position: relative; }
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    padding-top: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--divider);
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 60px;
+    align-items: start;
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(3.4rem, 7vw, 7rem);
+    line-height: 1.0;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--ink);
+  }
+  .hero-headline .accent-word {
+    color: var(--accent);
+  }
+  .hero-meta {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .hero-meta-item {
+    border-top: 1px solid var(--divider);
+    padding-top: 12px;
+  }
+  .meta-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    display: block;
+  }
+  .meta-value {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink);
+  }
+  .hero-sub {
+    margin-top: 48px;
+    max-width: 520px;
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 36px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--accent);
+    animation: scroll-sweep 2s ease-in-out infinite;
+  }
+  @keyframes scroll-sweep {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+  }
+  .scroll-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── WORKS ─── */
+  #works {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--divider);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+  }
+  .section-count {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 28px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--divider);
+    cursor: none;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .project-row::before {
+    content: '';
+    position: absolute;
+    inset: 0 -40px;
+    background: transparent;
+    transition: background 0.3s;
+    z-index: 0;
+  }
+  .project-row:hover::before {
+    background: rgba(212,255,79,0.03);
+  }
+  .project-row > * { position: relative; z-index: 1; }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .project-info { flex: 1; }
+  .project-name {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+    font-weight: 400;
+    transition: color 0.2s;
+    line-height: 1.1;
+  }
+  .project-row:hover .project-name { color: var(--accent); }
+  .project-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--divider);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .project-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* Hover thumbnail */
+  .project-thumb {
+    position: fixed;
+    width: 200px; height: 130px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.88) rotate(-2deg);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 200;
+    overflow: hidden;
+  }
+  .project-thumb.visible {
+    opacity: 1;
+    transform: scale(1) rotate(-1deg);
+  }
+  .thumb-1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #1a472a 100%); }
+  .thumb-2 { background: linear-gradient(140deg, #2d1b00 0%, #6b3a1f 40%, #c4622d 70%, #e8890c 100%); }
+  .thumb-3 { background: linear-gradient(120deg, #0d1b1e 0%, #134e48 35%, #1a7a70 65%, #2e9e8c 100%); }
+
+  .thumb-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .thumb-inner::before {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    top: -20px; right: -20px;
+  }
+  .thumb-inner::after {
+    content: '';
+    position: absolute;
+    width: 60px; height: 60px;
+    border: 1px solid rgba(255,255,255,0.1);
+    bottom: 10px; left: 10px;
+    border-radius: 2px;
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  /* CSS Art Portrait */
+  .portrait-block {
+    position: relative;
+    width: 260px; height: 320px;
+    flex-shrink: 0;
+  }
+  .portrait-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #1c1a2e 0%, #1e2a1a 60%, #141416 100%);
+    border-radius: 4px;
+  }
+  .portrait-accent-stripe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+    border-radius: 4px 0 0 4px;
+  }
+  .portrait-circle {
+    position: absolute;
+    width: 110px; height: 110px;
+    background: linear-gradient(135deg, #2e2a48, #1e3a30);
+    border-radius: 50%;
+    top: 48px; left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgba(212,255,79,0.15);
+  }
+  .portrait-circle::after {
+    content: '';
+    position: absolute;
+    width: 36px; height: 36px;
+    background: rgba(212,255,79,0.12);
+    border-radius: 50%;
+    top: 22px; left: 50%;
+    transform: translateX(-50%);
+  }
+  .portrait-body {
+    position: absolute;
+    width: 130px; height: 80px;
+    background: linear-gradient(180deg, #2a2a3e, #1e1e28);
+    border-radius: 65px 65px 0 0;
+    bottom: 60px; left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .portrait-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212,255,79,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,255,79,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: 4px;
+  }
+  .portrait-label {
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .about-text { padding-top: 10px; }
+  .about-bio {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+  .pull-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+  .fact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .fact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--divider);
+    font-size: 0.85rem;
+  }
+  .fact-key {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 110px;
+  }
+  .fact-val { color: var(--ink); }
+
+  /* ─── SKILLS ─── */
+  #skills {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .capability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 60px;
+  }
+  .capability-item {
+    padding: 40px 32px;
+    border-right: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    transition: background 0.3s;
+  }
+  .capability-item:nth-child(3n) { border-right: none; }
+  .capability-item:nth-last-child(-n+3) { border-bottom: none; }
+  .capability-item:hover { background: rgba(212,255,79,0.02); }
+  .cap-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .cap-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .cap-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ─── EXPERIENCE TIMELINE ─── */
+  #experience {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .timeline {
+    position: relative;
+    margin-top: 60px;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--divider);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 48px 32px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -32px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 4px var(--bg);
+    z-index: 1;
+  }
+  .tl-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .tl-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .tl-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ─── RECOGNITION ─── */
+  #recognition {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .press-list { margin-top: 50px; }
+  .press-item {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--divider);
+    transition: background 0.2s;
+  }
+  .press-item:first-child { border-top: 1px solid var(--divider); }
+  .press-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
+    margin-top: 4px;
+    transition: background 0.2s;
+  }
+  .press-item:hover .press-dot { background: var(--accent); }
+  .press-name {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    min-width: 220px;
+  }
+  .press-detail {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .press-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    padding: 140px 0 80px;
+  }
+  .contact-cta {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 800px;
+    margin-bottom: 60px;
+  }
+  .contact-cta em { font-style: italic; color: var(--accent); }
+  .contact-email {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+    font-style: italic;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    display: inline-block;
+    margin-bottom: 50px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-email:hover { color: var(--accent); }
+  .social-row {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin-bottom: 80px;
+  }
+  .social-row a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-row a:hover { color: var(--accent); }
+
+  /* MARQUEE FOOTER */
+  .marquee-footer {
+    border-top: 1px solid var(--divider);
+    overflow: hidden;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: marquee-left 22s linear infinite;
+  }
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .marquee-sep {
+    color: var(--accent);
+    font-style: normal;
+    margin: 0 10px;
+  }
+
+  .copyright {
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .copyright-text {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .copyright-right {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* FADE-UP ANIMATION */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up.delay-1 { transition-delay: 0.1s; }
+  .fade-up.delay-2 { transition-delay: 0.2s; }
+  .fade-up.delay-3 { transition-delay: 0.3s; }
+  .fade-up.delay-4 { transition-delay: 0.4s; }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .status-pill { display:none; }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero-meta { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait-block { display: none; }
+    .capability-grid { grid-template-columns: 1fr; }
+    .timeline { padding-left: 24px; }
+    .meta-col { display: none; }
+    .section-inner { padding: 0 20px; }
+    .scroll-indicator { left: 20px; }
+    .copyright { padding: 20px; flex-direction: column; gap: 8px; }
+    .press-name { min-width: unset; }
+    .project-row { grid-template-columns: 40px 1fr; }
+    .project-year { display: none; }
+    .contact-form input:first-child { grid-column:1/-1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- Floating thumbnail (follows cursor on project hover) -->
+<div class="project-thumb thumb-1" id="project-thumb">
+  <div class="thumb-inner"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Joaquín Salgueiro</a>
+  <ul class="nav-links">
+    <li><a href="#works">Proyectos</a></li>
+    <li><a href="#about">Perfil</a></li>
+    <li><a href="#skills">Habilidades</a></li>
+    <li><a href="#experience">Experiencia</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="status-pill" style="cursor:default;">
+      <span class="status-dot"></span>
+      <span class="status-text">Disponible</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
+      <svg class="theme-icon sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg class="theme-icon moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">Now</div>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="ticker-inner">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- RIGHT META COL -->
+<div class="meta-col" id="meta-col">
+  <span class="meta-section" id="meta-section-name">Hero</span>
+  <div class="meta-progress-track">
+    <div class="meta-progress-fill" id="meta-progress"></div>
+  </div>
+  <span class="meta-clock" id="meta-clock">00:00</span>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <h1 class="hero-headline fade-up">
+        Joaquín<br>
+        <em>Salgueiro</em><br>
+        <span class="accent-word">Emiliano</span>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Analista en Sistemas & Desarrollador Full Stack egresado del IESA.
+        Proactivo, responsable y con capacidad para llevar proyectos desde cero
+        hasta producción.
+      </p>
+      <div style="display:flex;gap:12px;margin-top:32px;" class="fade-up delay-3">
+        <a href="Joaquin_Salgueiro_CV.docx.pdf" download class="cv-btn" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--accent);border-radius:100px;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(212,255,79,0.1)'" onmouseout="this.style.background='transparent'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar CV
+        </a>
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--divider);border-radius:100px;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--divider)'">
+          Contactame
+        </a>
+      </div>
+    </div>
+    <div class="hero-meta fade-up delay-1">
+      <div class="hero-meta-item">
+        <span class="meta-label">Ubicación</span>
+        <span class="meta-value">Posadas, Misiones</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Rol</span>
+        <span class="meta-value">Full Stack Developer</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Email</span>
+        <span class="meta-value">joaquinsalgueiro15@gmail.com</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Teléfono</span>
+        <span class="meta-value" style="color: var(--accent);">+54 9 376 470-0115</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Proyectos Destacados</h2>
+      <span class="section-count">03 proyectos</span>
+    </div>
+
+    <div class="project-row fade-up" data-thumb="thumb-1">
+      <span class="project-num">01</span>
+      <div class="project-info">
+        <a href="https://suma-mente.vercel.app" target="_blank" class="project-name" style="text-decoration:none;color:inherit">SumaMente</a>
+        <div class="project-tags">
+          <span class="tag">Web App</span>
+          <span class="tag">Calculadora</span>
+          <span class="tag">40+ Módulos</span>
+        </div>
+      </div>
+      <div class="project-year">2026</div>
+    </div>
+
+    <div class="project-row fade-up delay-1" data-thumb="thumb-2">
+      <span class="project-num">02</span>
+      <div class="project-info">
+        <a href="https://platahoy.vercel.app" target="_blank" class="project-name" style="text-decoration:none;color:inherit">PlataHoy</a>
+        <div class="project-tags">
+          <span class="tag">Blog</span>
+          <span class="tag">Finanzas</span>
+          <span class="tag">Educación</span>
+        </div>
+      </div>
+      <div class="project-year">2026</div>
+    </div>
+
+    <div class="project-row fade-up delay-2" data-thumb="thumb-3">
+      <span class="project-num">03</span>
+      <div class="project-info">
+        <div class="project-name">NexoStock</div>
+        <div class="project-tags">
+          <span class="tag">POS</span>
+          <span class="tag">Sistema</span>
+          <span class="tag">Producción</span>
+        </div>
+      </div>
+      <div class="project-year">2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Perfil Profesional</h2>
+      <span class="section-count">Sobre mí</span>
+    </div>
+    <div class="about-grid">
+      <div class="portrait-block fade-up" style="overflow:hidden;border-radius:4px;">
+        <img src="Imagen1.jpg" alt="Joaquín Salgueiro" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="portrait-grid-lines"></div>
+        <div class="portrait-accent-stripe"></div>
+        <span class="portrait-label">JS / POSADAS</span>
+      </div>
+      <div class="about-text">
+        <p class="about-bio fade-up delay-1">
+          Analista en Sistemas egresado del IESA (marzo 2026) con enfoque en desarrollo
+          full stack y creación de herramientas digitales útiles. Proactivo, responsable
+          y con capacidad para llevar proyectos desde cero hasta producción.
+        </p>
+        <p class="about-bio fade-up delay-2">
+          Como desarrollador independiente, he llevado a cabo proyectos completos que
+          abarcan desde calculadoras científicas avanzadas hasta sistemas POS en
+          producción. Me apasiona crear soluciones que realmente resuelvan problemas
+          del mundo real.
+        </p>
+        <blockquote class="pull-quote fade-up delay-3">
+          "La tecnología está para servir a las personas, no al revés."
+        </blockquote>
+        <ul class="fact-list fade-up delay-4">
+          <li class="fact-item">
+            <span class="fact-key">Formación</span>
+            <span class="fact-val">Analista en Sistemas — IESA</span>
+          </li>
+          <li class="fact-item">
+            <span class="fact-key">Idiomas</span>
+            <span class="fact-val">Español (nativo), Inglés (técnico)</span>
+          </li>
+          <li class="fact-item">
+            <span class="fact-key">Stack</span>
+            <span class="fact-val">HTML, CSS, JS, PHP, Python, MySQL</span>
+          </li>
+          <li class="fact-item">
+            <span class="fact-key">Disponible</span>
+            <span class="fact-val" style="color: var(--accent);">Para proyectos y colaboraciones</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Habilidades Técnicas</h2>
+      <span class="section-count">Competencias</span>
+    </div>
+    <div class="capability-grid">
+      <div class="capability-item fade-up">
+        <span class="cap-num">01</span>
+        <div class="cap-name">HTML &amp; CSS</div>
+        <p class="cap-desc">Maquetación semántica, responsive design, animaciones y layouts modernos con Flexbox y Grid.</p>
+      </div>
+      <div class="capability-item fade-up delay-1">
+        <span class="cap-num">02</span>
+        <div class="cap-name">JavaScript</div>
+        <p class="cap-desc">Desarrollo de aplicaciones interactivas, manipulación del DOM, lógica compleja y validaciones.</p>
+      </div>
+      <div class="capability-item fade-up delay-2">
+        <span class="cap-num">03</span>
+        <div class="cap-name">PHP &amp; MySQL</div>
+        <p class="cap-desc">Sistemas backend, bases de datos relacionales, consultas SQL y lógica del lado del servidor.</p>
+      </div>
+      <div class="capability-item fade-up delay-3">
+        <span class="cap-num">04</span>
+        <div class="cap-name">Python</div>
+        <p class="cap-desc">Scripts de automatización, análisis de datos y desarrollo de herramientas de consola y web.</p>
+      </div>
+      <div class="capability-item fade-up delay-4">
+        <span class="cap-num">05</span>
+        <div class="cap-name">Full Stack</div>
+        <p class="cap-desc">Proyectos completos desde cero hasta producción: frontend, backend, base de datos y deploy.</p>
+      </div>
+      <div class="capability-item fade-up delay-1">
+        <span class="cap-num">06</span>
+        <div class="cap-name">Implementación</div>
+        <p class="cap-desc">Instalación, configuración, capacitación de usuarios y soporte de sistemas en producción real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Experiencia Laboral</h2>
+      <span class="section-count">Trayectoria</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2026 — Actualidad</span>
+        <div class="tl-title">Desarrollador Independiente &amp; Implementación</div>
+        <p class="tl-desc">Desarrollo completo del sistema NexoStock (POS) para supermercado. Implementación, pruebas, capacitación de cajeros y selección de personal.</p>
+      </div>
+      <div class="tl-item fade-up delay-1">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2026</span>
+        <div class="tl-title">SumaMente &amp; PlataHoy</div>
+        <p class="tl-desc">Creación de SumaMente, calculadora científica y técnica con más de 40 módulos, y PlataHoy, blog educativo sobre finanzas personales y tecnología.</p>
+      </div>
+      <div class="tl-item fade-up delay-2">
+        <div class="tl-dot"></div>
+        <span class="tl-year">Marzo 2026</span>
+        <div class="tl-title">Graduación como Analista en Sistemas</div>
+        <p class="tl-desc">Egresado del IESA, con certificación en Armado y Configuración de Computadoras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Formación Académica</h2>
+      <span class="section-count">Estudios</span>
+    </div>
+    <div class="press-list">
+      <div class="press-item fade-up">
+        <div class="press-dot"></div>
+        <span class="press-name">Analista en Sistemas</span>
+        <span class="press-detail">Instituto de Estudios Superiores Argentino (IESA)</span>
+        <span class="press-year">2026</span>
+      </div>
+      <div class="press-item fade-up delay-1">
+        <div class="press-dot"></div>
+        <span class="press-name">Armado y Configuración de Computadoras</span>
+        <span class="press-detail">Certificación — IESA</span>
+        <span class="press-year">2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <h2 class="contact-cta fade-up">
+      Trabajemos <em>juntos.</em>
+    </h2>
+    <a href="mailto:joaquinsalgueiro15@gmail.com" class="contact-email fade-up delay-1">
+      joaquinsalgueiro15@gmail.com
+    </a>
+    <ul class="social-row fade-up delay-2">
+      <li><a href="https://wa.me/5493764700115" target="_blank">WhatsApp</a></li>
+      <li><a href="https://www.linkedin.com/in/joaquinsalgueiro" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com/joaquinsalgueiro" target="_blank">GitHub</a></li>
+      <li><a href="https://suma-mente.vercel.app" target="_blank">SumaMente</a></li>
+      <li><a href="https://platahoy.vercel.app" target="_blank">PlataHoy</a></li>
+    </ul>
+    <form class="contact-form fade-up delay-3" id="contactForm" style="max-width:500px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <input type="text" name="nombre" placeholder="Nombre" required style="padding:12px 16px;background:var(--card-bg);border:1px solid var(--divider);border-radius:var(--radius);color:var(--ink);font-family:var(--sans);font-size:0.85rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--divider)'">
+        <input type="email" name="email" placeholder="Email" required style="padding:12px 16px;background:var(--card-bg);border:1px solid var(--divider);border-radius:var(--radius);color:var(--ink);font-family:var(--sans);font-size:0.85rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--divider)'">
+      </div>
+      <textarea name="mensaje" rows="4" placeholder="Tu mensaje..." required style="width:100%;padding:12px 16px;background:var(--card-bg);border:1px solid var(--divider);border-radius:var(--radius);color:var(--ink);font-family:var(--sans);font-size:0.85rem;outline:none;resize:vertical;transition:border-color 0.2s;margin-bottom:12px;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--divider)'"></textarea>
+      <button type="submit" style="padding:12px 28px;background:var(--accent);color:var(--bg);border:none;border-radius:100px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Enviar mensaje</button>
+    </form>
+  </div>
+</section>
+
+<!-- MARQUEE FOOTER -->
+<div class="marquee-footer">
+  <div class="marquee-track" id="marquee-track">
+    <!-- populated by JS -->
+  </div>
+</div>
+<div class="copyright">
+  <span class="copyright-text">Joaquín Salgueiro Emiliano &mdash; Full Stack Developer &mdash; Posadas, Misiones</span>
+  <span class="copyright-right">2026 &mdash; Todos los derechos reservados</span>
+</div>
+
+<script>
+  // THEME TOGGLE
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const sunIcon = themeToggle.querySelector('.sun-icon');
+  const moonIcon = themeToggle.querySelector('.moon-icon');
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    sunIcon.style.display = theme === 'dark' ? 'block' : 'none';
+    moonIcon.style.display = theme === 'light' ? 'block' : 'none';
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#0E0E10' : '#F5F3EF');
+    localStorage.setItem('theme', theme);
+  }
+  const saved = localStorage.getItem('theme') || 'dark';
+  setTheme(saved);
+  themeToggle.addEventListener('click', () => {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // CONTACT FORM
+  const formEl = document.getElementById('contactForm');
+  if (formEl) {
+    formEl.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const f = this;
+      const btn = f.querySelector('button');
+      const orig = btn.textContent;
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      const data = new FormData(f);
+      // Reemplazá "your-form-id" con tu ID de Formspree (https://formspree.io)
+      fetch('https://formspree.io/f/your-form-id', {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          btn.textContent = '✓ Mensaje enviado';
+          f.reset();
+          setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
+        } else { throw new Error(); }
+      }).catch(() => {
+        btn.textContent = '✗ Error - usá WhatsApp o email';
+        setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 4000);
+      });
+    });
+  }
+
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  document.querySelectorAll('a, .project-row, .capability-item, .process-step').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+  });
+
+  // TICKER
+  const statuses = [
+    'Analista en Sistemas — IESA 2026',
+    'Full Stack Developer',
+    'Proyecto: SumaMente — suma-mente.vercel.app',
+    'Proyecto: PlataHoy — platahoy.vercel.app',
+    'Proyecto: NexoStock — POS en producción',
+    'Ubicación: Posadas, Misiones',
+    'Disponible para nuevos proyectos',
+    'HTML • CSS • JS • PHP • Python • MySQL',
+  ];
+  const ticker = document.getElementById('ticker-inner');
+  const repeated = [...statuses, ...statuses];
+  repeated.forEach(s => {
+    const span = document.createElement('span');
+    span.textContent = s;
+    ticker.appendChild(span);
+  });
+
+  // MARQUEE FOOTER
+  const marqueeItems = [
+    'HTML & CSS', 'JavaScript', 'PHP & MySQL',
+    'Python', 'Full Stack', 'Sistemas en Producción',
+  ];
+  const marqueeTrack = document.getElementById('marquee-track');
+  const repeatedMarquee = [...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems];
+  repeatedMarquee.forEach((item, i) => {
+    const span = document.createElement('span');
+    span.className = 'marquee-item';
+    span.innerHTML = item + (i < repeatedMarquee.length - 1 ? '<span class="marquee-sep">&mdash;</span>' : '');
+    marqueeTrack.appendChild(span);
+  });
+
+  // CLOCK
+  const clockEl = document.getElementById('meta-clock');
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    clockEl.textContent = h + ':' + m + ':' + s;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // PROGRESS + SECTION TRACKING
+  const sections = ['hero', 'works', 'about', 'skills', 'experience', 'education', 'contact'];
+  const sectionNames = ['Hero', 'Proyectos', 'Perfil', 'Habilidades', 'Experiencia', 'Formación', 'Contacto'];
+  const progressEl = document.getElementById('meta-progress');
+  const sectionNameEl = document.getElementById('meta-section-name');
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+    progressEl.style.height = pct + '%';
+
+    // find current section
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 120) current = i;
+    });
+    sectionNameEl.textContent = sectionNames[current];
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // FADE-UP INTERSECTIONOBSERVER
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Start hero elements visible immediately
+  document.querySelectorAll('#hero .fade-up').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 80);
+  });
+
+  // PROJECT THUMBNAIL HOVER
+  const thumb = document.getElementById('project-thumb');
+  const thumbClasses = ['thumb-1','thumb-2','thumb-3'];
+
+  document.querySelectorAll('.project-row').forEach(row => {
+    const tc = row.dataset.thumb;
+    row.addEventListener('mouseenter', () => {
+      thumbClasses.forEach(c => thumb.classList.remove(c));
+      thumb.classList.add(tc);
+      thumb.classList.add('visible');
+    });
+    row.addEventListener('mouseleave', () => {
+      thumb.classList.remove('visible');
+    });
+  });
+
+  document.addEventListener('mousemove', e => {
+    thumb.style.left = (e.clientX + 20) + 'px';
+    thumb.style.top = (e.clientY - 65) + 'px';
+  });
+</script>
+</body>
+</html>
