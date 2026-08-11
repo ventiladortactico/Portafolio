@@ -130,7 +130,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
   }
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden" aria-hidden="true">
       <div
         ref={ringRef}
         className={`fixed top-0 left-0 w-10 h-10 rounded-full border pointer-events-none flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,backdrop-filter] duration-200 ease-out ${
