@@ -32,9 +32,9 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
 
           {/* Col 2: Quick Links */}
           <div className="space-y-2">
-            <h4 className={`text-xs font-mono font-bold uppercase tracking-wider ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+            <h3 className={`text-xs font-mono font-bold uppercase tracking-wider ${darkMode ? 'text-white' : 'text-slate-900'}`}>
               Navegación
-            </h4>
+            </h3>
               <ul className="space-y-1.5 text-xs">
                 <li><a href="#inicio" className="hover:text-blue-500 transition-colors py-1 block min-h-[24px] flex items-center">Inicio</a></li>
                 <li><a href="#proyectos" className="hover:text-blue-500 transition-colors py-1 block min-h-[24px] flex items-center">Proyectos</a></li>
@@ -45,9 +45,9 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
 
           {/* Col 3: Contacto */}
           <div className="space-y-2">
-            <h4 className={`text-xs font-mono font-bold uppercase tracking-wider ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+            <h3 className={`text-xs font-mono font-bold uppercase tracking-wider ${darkMode ? 'text-white' : 'text-slate-900'}`}>
               Contacto
-            </h4>
+            </h3>
             <ul className="space-y-1.5 text-xs">
               <li>
                 <a href="mailto:joaquinsalgueiro15@gmail.com" className="hover:text-blue-500 transition-colors flex items-center gap-1.5 py-1 min-h-[24px]">

@@ -112,9 +112,9 @@ export const SkillsSection: React.FC<{ darkMode: boolean }> = ({ darkMode }) => 
               </div>
 
               {/* Name */}
-              <h4 className={`text-sm font-bold mb-1 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-sm font-bold mb-1 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                 {skill.name}
-              </h4>
+              </h3>
 
               {/* Description */}
               <p className="text-[11px] text-slate-400 leading-relaxed mb-3">

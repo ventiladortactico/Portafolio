@@ -73,9 +73,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${method.color} text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 {method.icon}
               </div>
-              <h4 className={`text-sm font-bold mb-1 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-sm font-bold mb-1 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                 {method.name}
-              </h4>
+              </h3>
               <p className="text-xs text-slate-400 mb-3 truncate">
                 {method.description}
               </p>

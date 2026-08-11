@@ -162,9 +162,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, da
 
               {/* Long Description */}
               <div className="space-y-3">
-                <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider font-mono">
+                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider font-mono">
                   Descripción General
-                </h4>
+                </h3>
                 <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                   {project.longDescription}
                 </p>
@@ -172,9 +172,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, da
 
               {/* Technical Highlights */}
               <div className="space-y-3">
-                <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider font-mono">
+                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider font-mono">
                   Puntos Clave de Implementación
-                </h4>
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {project.highlights.map((item, idx) => (
                     <div
@@ -191,10 +191,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, da
               {/* Tech Stack */}
               <div className="bg-gradient-to-br from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2">
                     <Code2 className="w-4 h-4 text-blue-500" />
                     Stack Tecnológico
-                  </h4>
+                  </h3>
                   {project.id === 'sumamente' && (
                     <span className="text-[10px] px-2.5 py-1 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full font-bold border border-emerald-500/30 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
