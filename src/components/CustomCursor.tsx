@@ -98,15 +98,11 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
       const dotScale = isClickedRef.current ? 0.7 : isHoveredRef.current ? 1.5 : 1;
 
       if (ringRef.current) {
-        ringRef.current.style.left = `${x}px`;
-        ringRef.current.style.top = `${y}px`;
-        ringRef.current.style.transform = `translate(-50%, -50%) scale(${ringScale})`;
+        ringRef.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${ringScale})`;
       }
 
       if (dotRef.current) {
-        dotRef.current.style.left = `${x}px`;
-        dotRef.current.style.top = `${y}px`;
-        dotRef.current.style.transform = `translate(-50%, -50%) scale(${dotScale})`;
+        dotRef.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${dotScale})`;
       }
 
       animFrameId.current = requestAnimationFrame(render);
@@ -137,7 +133,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
     <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
       <div
         ref={ringRef}
-        className={`fixed w-10 h-10 rounded-full border pointer-events-none flex items-center justify-center will-change-transform ${
+        className={`fixed top-0 left-0 w-10 h-10 rounded-full border pointer-events-none flex items-center justify-center transition-[colors,box-shadow] duration-200 ${
           isHovered
             ? 'bg-blue-500/15 border-blue-400 backdrop-blur-[1px] shadow-lg shadow-blue-500/25'
             : isClicked
@@ -146,11 +142,11 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
             ? 'border-blue-400/60 bg-blue-400/5'
             : 'border-blue-600/60 bg-blue-600/5'
         }`}
-        style={{ left: -200, top: -200, transform: 'translate(-50%, -50%) scale(1)' }}
+        style={{ transform: 'translate(-200px, -200px) translate(-50%, -50%) scale(1)', willChange: 'transform' }}
       />
       <div
         ref={dotRef}
-        className={`fixed w-2.5 h-2.5 rounded-full pointer-events-none will-change-transform ${
+        className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none transition-colors duration-150 ${
           isHovered
             ? 'bg-emerald-400 ring-4 ring-emerald-400/30'
             : isClicked
@@ -159,7 +155,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
             ? 'bg-blue-400 shadow-sm shadow-blue-400/60'
             : 'bg-blue-600 shadow-sm shadow-blue-600/60'
         }`}
-        style={{ left: -200, top: -200, transform: 'translate(-50%, -50%) scale(1)' }}
+        style={{ transform: 'translate(-200px, -200px) translate(-50%, -50%) scale(1)', willChange: 'transform' }}
       />
     </div>
   );
