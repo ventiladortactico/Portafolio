@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@layer utilities {
+  body.custom-cursor-enabled,
+  body.custom-cursor-enabled * {
+    cursor: none !important;
+  }
+}
