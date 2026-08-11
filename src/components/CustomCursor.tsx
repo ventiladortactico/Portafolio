@@ -106,10 +106,12 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
         ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%) scale(${ringScale})`;
       }
 
-      // Render Dot - ALWAYS synchronized in the same frame
+      // Render Dot - Same frame, same coordinates
       if (dotRef.current) {
         const dotScale = isClickedRef.current ? 0.7 : isHoveredRef.current ? 1.5 : 1;
         dotRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%) scale(${dotScale})`;
+        // DEBUG: log to see what's happening
+        console.log('DOT:', mousePos.current.x, mousePos.current.y, 'RING:', ringPos.current.x, ringPos.current.y);
       }
 
       animFrameId.current = requestAnimationFrame(render);
