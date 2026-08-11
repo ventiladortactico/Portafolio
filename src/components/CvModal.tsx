@@ -184,17 +184,6 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose, darkMode }) =
           </div>
 
         </div>
-
-        {/* Modal Footer */}
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800 flex justify-between bg-slate-50 dark:bg-slate-950/50">
-          <span className="text-xs text-slate-400">Joaquín Salgueiro Emiliano • Posadas, Misiones</span>
-          <button
-            onClick={onClose}
-            className="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold hover:bg-slate-700 transition-colors"
-          >
-            Cerrar Vista
-          </button>
-        </div>
       </div>
     </div>
   );
