@@ -13,9 +13,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
-  // Target mouse position
   const mousePos = useRef({ x: -200, y: -200 });
-  // Lerp ring position
   const ringPos = useRef({ x: -200, y: -200 });
 
   const animFrameId = useRef<number | null>(null);
@@ -23,7 +21,6 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
   const isClickedRef = useRef(false);
 
   useEffect(() => {
-    // Keep refs in sync for requestAnimationFrame
     isHoveredRef.current = isHovered;
   }, [isHovered]);
 
@@ -54,7 +51,6 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
       if (!isVisible) setIsVisible(true);
 
-      // Check if hovering over interactive element
       const target = e.target as HTMLElement | null;
       if (target) {
         const interactive = Boolean(
@@ -64,17 +60,14 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
       }
     };
 
-    const handleMouseDown = (e: MouseEvent) => {
+    const handleMouseDown = () => {
       setIsClicked(true);
       isClickedRef.current = true;
-      mousePos.current = { x: e.clientX, y: e.clientY };
-      ringPos.current = { x: e.clientX, y: e.clientY };
     };
 
-    const handleMouseUp = (e: MouseEvent) => {
+    const handleMouseUp = () => {
       setIsClicked(false);
       isClickedRef.current = false;
-      mousePos.current = { x: e.clientX, y: e.clientY };
     };
 
     const handleMouseLeave = () => setIsVisible(false);
@@ -88,9 +81,8 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
-    // Render Loop - Unified rendering for both ring and dot
     const render = () => {
-      // Ring position
+      // Ring position: instant when clicking, lerp when not
       if (isClickedRef.current) {
         ringPos.current.x = mousePos.current.x;
         ringPos.current.y = mousePos.current.y;
@@ -100,18 +92,21 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
         ringPos.current.y += (mousePos.current.y - ringPos.current.y) * ease;
       }
 
-      // Render Ring
+      const x = mousePos.current.x;
+      const y = mousePos.current.y;
+      const ringScale = isClickedRef.current ? 0.8 : isHoveredRef.current ? 1.6 : 1;
+      const dotScale = isClickedRef.current ? 0.7 : isHoveredRef.current ? 1.5 : 1;
+
       if (ringRef.current) {
-        const ringScale = isClickedRef.current ? 0.8 : isHoveredRef.current ? 1.6 : 1;
-        ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%) scale(${ringScale})`;
+        ringRef.current.style.left = `${x}px`;
+        ringRef.current.style.top = `${y}px`;
+        ringRef.current.style.transform = `translate(-50%, -50%) scale(${ringScale})`;
       }
 
-      // Render Dot - Same frame, same coordinates
       if (dotRef.current) {
-        const dotScale = isClickedRef.current ? 0.7 : isHoveredRef.current ? 1.5 : 1;
-        dotRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%) scale(${dotScale})`;
-        // DEBUG: log to see what's happening
-        console.log('DOT:', mousePos.current.x, mousePos.current.y, 'RING:', ringPos.current.x, ringPos.current.y);
+        dotRef.current.style.left = `${x}px`;
+        dotRef.current.style.top = `${y}px`;
+        dotRef.current.style.transform = `translate(-50%, -50%) scale(${dotScale})`;
       }
 
       animFrameId.current = requestAnimationFrame(render);
@@ -140,10 +135,9 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
-      {/* Outer Smooth Lerp Ring */}
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 w-10 h-10 rounded-full border transition-colors duration-200 pointer-events-none flex items-center justify-center ${
+        className={`fixed w-10 h-10 rounded-full border pointer-events-none flex items-center justify-center will-change-transform ${
           isHovered
             ? 'bg-blue-500/15 border-blue-400 backdrop-blur-[1px] shadow-lg shadow-blue-500/25'
             : isClicked
@@ -152,28 +146,20 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
             ? 'border-blue-400/60 bg-blue-400/5'
             : 'border-blue-600/60 bg-blue-600/5'
         }`}
-        style={{
-          transformOrigin: 'center center',
-          willChange: 'transform',
-        }}
+        style={{ left: -200, top: -200, transform: 'translate(-50%, -50%) scale(1)' }}
       />
-
-      {/* Inner Instant Dot */}
       <div
         ref={dotRef}
-        className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full transition-colors duration-150 pointer-events-none ${
+        className={`fixed w-2.5 h-2.5 rounded-full pointer-events-none will-change-transform ${
           isHovered
             ? 'bg-emerald-400 ring-4 ring-emerald-400/30'
             : isClicked
-            ? 'bg-blue-400 scale-90'
+            ? 'bg-blue-400'
             : darkMode
             ? 'bg-blue-400 shadow-sm shadow-blue-400/60'
             : 'bg-blue-600 shadow-sm shadow-blue-600/60'
         }`}
-        style={{
-          transformOrigin: 'center center',
-          willChange: 'transform',
-        }}
+        style={{ left: -200, top: -200, transform: 'translate(-50%, -50%) scale(1)' }}
       />
     </div>
   );
