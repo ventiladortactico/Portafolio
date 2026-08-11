@@ -98,10 +98,12 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
 
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
+    const handleDragStart = (e: DragEvent) => e.preventDefault();
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('dragstart', handleDragStart);
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
@@ -129,6 +131,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('dragstart', handleDragStart);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
 

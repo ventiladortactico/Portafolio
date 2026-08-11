@@ -4,5 +4,7 @@
   body.custom-cursor-enabled,
   body.custom-cursor-enabled * {
     cursor: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
   }
 }
