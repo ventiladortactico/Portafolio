@@ -35,12 +35,12 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
             <h4 className={`text-xs font-mono font-bold uppercase tracking-wider ${darkMode ? 'text-white' : 'text-slate-900'}`}>
               Navegación
             </h4>
-             <ul className="space-y-1.5 text-xs">
-               <li><a href="#inicio" className="hover:text-blue-500 transition-colors">Inicio</a></li>
-               <li><a href="#proyectos" className="hover:text-blue-500 transition-colors">Proyectos</a></li>
-               <li><a href="#habilidades" className="hover:text-blue-500 transition-colors">Habilidades</a></li>
-               <li><a href="#contacto" className="hover:text-blue-500 transition-colors">Contacto</a></li>
-             </ul>
+              <ul className="space-y-1.5 text-xs">
+                <li><a href="#inicio" className="hover:text-blue-500 transition-colors py-1 block min-h-[24px] flex items-center">Inicio</a></li>
+                <li><a href="#proyectos" className="hover:text-blue-500 transition-colors py-1 block min-h-[24px] flex items-center">Proyectos</a></li>
+                <li><a href="#habilidades" className="hover:text-blue-500 transition-colors py-1 block min-h-[24px] flex items-center">Habilidades</a></li>
+                <li><a href="#contacto" className="hover:text-blue-500 transition-colors py-1 block min-h-[24px] flex items-center">Contacto</a></li>
+              </ul>
           </div>
 
           {/* Col 3: Contacto */}
@@ -50,17 +50,17 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
             </h4>
             <ul className="space-y-1.5 text-xs">
               <li>
-                <a href="mailto:joaquinsalgueiro15@gmail.com" className="hover:text-blue-500 transition-colors flex items-center gap-1.5">
+                <a href="mailto:joaquinsalgueiro15@gmail.com" className="hover:text-blue-500 transition-colors flex items-center gap-1.5 py-1 min-h-[24px]">
                   <Mail className="w-3.5 h-3.5" /> Email
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/joaquin-salgueiro" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors flex items-center gap-1.5">
+                <a href="https://linkedin.com/in/joaquin-salgueiro" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors flex items-center gap-1.5 py-1 min-h-[24px]">
                   <Code2 className="w-3.5 h-3.5" /> LinkedIn
                 </a>
               </li>
               <li>
-                <a href="https://github.com/joaquinsalgueiro" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors flex items-center gap-1.5">
+                <a href="https://github.com/joaquinsalgueiro" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition-colors flex items-center gap-1.5 py-1 min-h-[24px]">
                   <Code2 className="w-3.5 h-3.5" /> GitHub
                 </a>
               </li>
