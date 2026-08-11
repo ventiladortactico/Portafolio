@@ -54,12 +54,6 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
       if (!isVisible) setIsVisible(true);
 
-      // Instant Dot position calculation
-      if (dotRef.current) {
-        const dotScale = isClickedRef.current ? 0.7 : isHoveredRef.current ? 1.5 : 1;
-        dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%) scale(${dotScale})`;
-      }
-
       // Check if hovering over interactive element
       const target = e.target as HTMLElement | null;
       if (target) {
@@ -72,21 +66,14 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
 
     const handleMouseDown = (e: MouseEvent) => {
       setIsClicked(true);
-      isClickedRef.current = true; // Instant update for animation loop
-      // Snap the ring to the dot so they stay together while holding
+      isClickedRef.current = true;
       mousePos.current = { x: e.clientX, y: e.clientY };
       ringPos.current = { x: e.clientX, y: e.clientY };
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%) scale(0.7)`;
-      }
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%) scale(0.8)`;
-      }
     };
 
     const handleMouseUp = (e: MouseEvent) => {
       setIsClicked(false);
-      isClickedRef.current = false; // Instant update
+      isClickedRef.current = false;
       mousePos.current = { x: e.clientX, y: e.clientY };
     };
 
@@ -101,9 +88,9 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
-    // Smooth Lerp Animation Loop
+    // Render Loop - Unified rendering for both ring and dot
     const render = () => {
-      // Always update ring position - lock to mouse when clicking, lerp when not
+      // Ring position
       if (isClickedRef.current) {
         ringPos.current.x = mousePos.current.x;
         ringPos.current.y = mousePos.current.y;
@@ -113,9 +100,16 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
         ringPos.current.y += (mousePos.current.y - ringPos.current.y) * ease;
       }
 
+      // Render Ring
       if (ringRef.current) {
         const ringScale = isClickedRef.current ? 0.8 : isHoveredRef.current ? 1.6 : 1;
         ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%) scale(${ringScale})`;
+      }
+
+      // Render Dot - ALWAYS synchronized in the same frame
+      if (dotRef.current) {
+        const dotScale = isClickedRef.current ? 0.7 : isHoveredRef.current ? 1.5 : 1;
+        dotRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%) scale(${dotScale})`;
       }
 
       animFrameId.current = requestAnimationFrame(render);
