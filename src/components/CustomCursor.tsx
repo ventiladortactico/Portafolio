@@ -60,12 +60,6 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
         dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%) scale(${dotScale})`;
       }
 
-      // While clicking, keep ring locked to dot position instantly
-      if (isClickedRef.current && ringRef.current) {
-        ringPos.current = { x: e.clientX, y: e.clientY };
-        ringRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%) scale(0.8)`;
-      }
-
       // Check if hovering over interactive element
       const target = e.target as HTMLElement | null;
       if (target) {
@@ -109,16 +103,19 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
 
     // Smooth Lerp Animation Loop
     const render = () => {
-      // Only animate ring when NOT clicking - handleMouseMove takes over during click
-      if (!isClickedRef.current) {
+      // Always update ring position - lock to mouse when clicking, lerp when not
+      if (isClickedRef.current) {
+        ringPos.current.x = mousePos.current.x;
+        ringPos.current.y = mousePos.current.y;
+      } else {
         const ease = 0.18;
         ringPos.current.x += (mousePos.current.x - ringPos.current.x) * ease;
         ringPos.current.y += (mousePos.current.y - ringPos.current.y) * ease;
+      }
 
-        if (ringRef.current) {
-          const ringScale = isHoveredRef.current ? 1.6 : 1;
-          ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%) scale(${ringScale})`;
-        }
+      if (ringRef.current) {
+        const ringScale = isClickedRef.current ? 0.8 : isHoveredRef.current ? 1.6 : 1;
+        ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%) scale(${ringScale})`;
       }
 
       animFrameId.current = requestAnimationFrame(render);
