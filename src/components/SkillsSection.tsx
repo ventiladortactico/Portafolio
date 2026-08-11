@@ -3,7 +3,6 @@ import { Code, Layout, Server, Database, Terminal, Cpu, Layers, CheckCircle, Sho
 
 interface Skill {
   name: string;
-  level: number;
   icon: React.ReactNode;
   description: string;
   projects: string[];
@@ -20,39 +19,39 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     name: 'Frontend & Lenguajes',
     color: 'from-blue-500 to-cyan-500',
     skills: [
-      { name: 'JavaScript ES6+', level: 90, icon: <Code className="w-5 h-5" />, description: 'Lógica vanilla, DOM, async/await, módulos', projects: ['SumaMente', 'NexoStock', 'PlataHoy'] },
-      { name: 'HTML5 & CSS3', level: 92, icon: <Layout className="w-5 h-5" />, description: 'Maquetación responsive, CSS Grid, Flexbox, animaciones', projects: ['SumaMente', 'PlataHoy'] },
-      { name: 'TypeScript', level: 70, icon: <Code className="w-5 h-5" />, description: 'Tipado fuerte, interfaces, proyectos con testing', projects: ['SumaMente'] },
-      { name: 'React', level: 75, icon: <Globe className="w-5 h-5" />, description: 'Hooks, componentes, arquitectura SPA', projects: ['Este portafolio'] }
+      { name: 'JavaScript ES6+', icon: <Code className="w-5 h-5" />, description: 'Lógica vanilla, DOM, async/await, módulos', projects: ['SumaMente', 'NexoStock', 'PlataHoy'] },
+      { name: 'HTML5 & CSS3', icon: <Layout className="w-5 h-5" />, description: 'Maquetación responsive, CSS Grid, Flexbox, animaciones', projects: ['SumaMente', 'PlataHoy'] },
+      { name: 'TypeScript', icon: <Code className="w-5 h-5" />, description: 'Tipado fuerte, interfaces, proyectos con testing', projects: ['SumaMente'] },
+      { name: 'React', icon: <Globe className="w-5 h-5" />, description: 'Hooks, componentes, arquitectura SPA', projects: ['Este portafolio'] }
     ]
   },
   {
     name: 'Backend & Bases de Datos',
     color: 'from-emerald-500 to-teal-500',
     skills: [
-      { name: 'PHP', level: 88, icon: <Server className="w-5 h-5" />, description: 'Backend NexoStock, APIs REST, arquitectura cliente-servidor', projects: ['NexoStock'] },
-      { name: 'MySQL', level: 88, icon: <Database className="w-5 h-5" />, description: 'Diseño de esquemas, índices, transacciones atómicas', projects: ['NexoStock'] },
-      { name: 'Node.js', level: 78, icon: <Cpu className="w-5 h-5" />, description: 'Servidores backend, MCP Blog Server, ES modules', projects: ['PlataHoy'] },
-      { name: 'Python', level: 70, icon: <Terminal className="w-5 h-5" />, description: 'Scripts de automatización, herramientas de diagnóstico', projects: ['Hardware Diagnostic'] }
+      { name: 'PHP', icon: <Server className="w-5 h-5" />, description: 'Backend NexoStock, APIs REST, arquitectura cliente-servidor', projects: ['NexoStock'] },
+      { name: 'MySQL', icon: <Database className="w-5 h-5" />, description: 'Diseño de esquemas, índices, transacciones atómicas', projects: ['NexoStock'] },
+      { name: 'Node.js', icon: <Cpu className="w-5 h-5" />, description: 'Servidores backend, MCP Blog Server, ES modules', projects: ['PlataHoy'] },
+      { name: 'Python', icon: <Terminal className="w-5 h-5" />, description: 'Scripts de automatización, herramientas de diagnóstico', projects: ['Hardware Diagnostic'] }
     ]
   },
   {
     name: 'Sistemas & Producción',
     color: 'from-purple-500 to-pink-500',
     skills: [
-      { name: 'Sistemas POS', level: 95, icon: <ShoppingCart className="w-5 h-5" />, description: 'Lógica de cobro, códigos de barras, impresoras térmicas', projects: ['NexoStock'] },
-      { name: 'Implementación', level: 92, icon: <Zap className="w-5 h-5" />, description: 'Despliegue en producción real, configuración en punto de venta', projects: ['NexoStock'] },
-      { name: 'PWA & Web Apps', level: 85, icon: <Monitor className="w-5 h-5" />, description: 'Service workers, offline-first, Canvas API, Chart.js', projects: ['SumaMente', 'PlataHoy'] },
-      { name: 'Capacitación', level: 88, icon: <Users className="w-5 h-5" />, description: 'Entrenamiento de cajeros, manuales operativos', projects: ['NexoStock'] }
+      { name: 'Sistemas POS', icon: <ShoppingCart className="w-5 h-5" />, description: 'Lógica de cobro, códigos de barras, impresoras térmicas', projects: ['NexoStock'] },
+      { name: 'Implementación', icon: <Zap className="w-5 h-5" />, description: 'Despliegue en producción real, configuración en punto de venta', projects: ['NexoStock'] },
+      { name: 'PWA & Web Apps', icon: <Monitor className="w-5 h-5" />, description: 'Service workers, offline-first, Canvas API, Chart.js', projects: ['SumaMente', 'PlataHoy'] },
+      { name: 'Capacitación', icon: <Users className="w-5 h-5" />, description: 'Entrenamiento de cajeros, manuales operativos', projects: ['NexoStock'] }
     ]
   },
   {
     name: 'Hardware & Redes',
     color: 'from-amber-500 to-orange-500',
     skills: [
-      { name: 'Armado de PCs', level: 90, icon: <Wrench className="w-5 h-5" />, description: 'Reconocimiento de componentes, banco de prueba, ensamble', projects: ['Certificación IESA'] },
-      { name: 'Diagnóstico', level: 88, icon: <CheckCircle className="w-5 h-5" />, description: 'Fallas hardware/software, mantenimiento preventivo', projects: ['Certificación IESA'] },
-      { name: 'Redes', level: 75, icon: <Shield className="w-5 h-5" />, description: 'Nociones de comunicaciones y redes', projects: ['Certificación IESA'] }
+      { name: 'Armado de PCs', icon: <Wrench className="w-5 h-5" />, description: 'Reconocimiento de componentes, banco de prueba, ensamble', projects: ['Certificación IESA'] },
+      { name: 'Diagnóstico', icon: <CheckCircle className="w-5 h-5" />, description: 'Fallas hardware/software, mantenimiento preventivo', projects: ['Certificación IESA'] },
+      { name: 'Redes', icon: <Shield className="w-5 h-5" />, description: 'Nociones de comunicaciones y redes', projects: ['Certificación IESA'] }
     ]
   }
 ];
@@ -107,14 +106,9 @@ export const SkillsSection: React.FC<{ darkMode: boolean }> = ({ darkMode }) => 
                   : 'bg-white border-slate-200 shadow-sm hover:shadow-lg'
               }`}
             >
-              {/* Icon & Level */}
-              <div className="flex items-center justify-between mb-3">
-                <div className={`p-2.5 rounded-xl bg-gradient-to-r ${SKILL_CATEGORIES[selectedCategory].color} text-white`}>
-                  {skill.icon}
-                </div>
-                <span className={`text-lg font-black bg-gradient-to-r ${SKILL_CATEGORIES[selectedCategory].color} bg-clip-text text-transparent`}>
-                  {skill.level}%
-                </span>
+              {/* Icon */}
+              <div className={`p-2.5 rounded-xl bg-gradient-to-r ${SKILL_CATEGORIES[selectedCategory].color} text-white w-fit mb-3`}>
+                {skill.icon}
               </div>
 
               {/* Name */}
@@ -126,14 +120,6 @@ export const SkillsSection: React.FC<{ darkMode: boolean }> = ({ darkMode }) => 
               <p className="text-[11px] text-slate-400 leading-relaxed mb-3">
                 {skill.description}
               </p>
-
-              {/* Progress Bar */}
-              <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
-                <div
-                  className={`h-full bg-gradient-to-r ${SKILL_CATEGORIES[selectedCategory].color} rounded-full transition-all duration-1000`}
-                  style={{ width: `${skill.level}%` }}
-                />
-              </div>
 
               {/* Projects Tags */}
               <div className="flex flex-wrap gap-1">

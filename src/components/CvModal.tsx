@@ -154,7 +154,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose, darkMode }) =
             <div className="space-y-2 text-xs sm:text-sm">
               <div className="p-3 bg-slate-50 dark:bg-slate-950/60 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-between">
                 <div>
-                  <p className="font-bold">Analista en Sistemas</p>
+                  <p className="font-bold">Analista en Sistemas de Información</p>
                   <p className="text-xs text-slate-500">Instituto de Estudios Superiores Argentino (IESA)</p>
                 </div>
                 <span className="font-mono text-xs text-emerald-500 font-bold">Marzo 2026</span>

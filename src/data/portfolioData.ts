@@ -6,7 +6,7 @@ import platahoyLogo from '../../logo_platahoy.png';
 import ejemploTicket from '../../ejemplo_ticket.jpg';
 
 export const PERSONAL_INFO = {
-  name: "Joaquín Salgueiro Emiliano",
+  name: "Joaquín Emiliano Salgueiro",
   shortName: "Joaquín Salgueiro",
   title: "Analista en Sistemas de Información",
   subtitle: "Desarrollador Frontend & Full Stack",

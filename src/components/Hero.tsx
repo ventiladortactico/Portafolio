@@ -34,9 +34,9 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             {/* Main Headline */}
             <div className="space-y-2">
               <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                <span className="block">JOAQUÍN SALGUEIRO</span>
+                <span className="block">JOAQUÍN EMILIANO</span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-500 dark:from-blue-400 dark:via-indigo-400 dark:to-emerald-400">
-                  EMILIANO
+                  SALGUEIRO
                 </span>
               </h1>
               <p className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">
@@ -58,6 +58,22 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             <p className={`text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
               {PERSONAL_INFO.summary}
             </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+              <a
+                href="#proyectos"
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-[1.02] flex items-center gap-2"
+              >
+                Ver Proyectos
+              </a>
+              <a
+                href="#contacto"
+                className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-700 transition-all hover:scale-[1.02] flex items-center gap-2"
+              >
+                Contactarme
+              </a>
+            </div>
 
             {/* Tech Stack Pills */}
             <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80">
