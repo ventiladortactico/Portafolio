@@ -133,7 +133,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
     <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 w-10 h-10 rounded-full border pointer-events-none flex items-center justify-center transition-[colors,box-shadow] duration-200 ${
+        className={`fixed top-0 left-0 w-10 h-10 rounded-full border pointer-events-none flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,backdrop-filter] duration-200 ease-out ${
           isHovered
             ? 'bg-blue-500/15 border-blue-400 backdrop-blur-[1px] shadow-lg shadow-blue-500/25'
             : isClicked
@@ -146,7 +146,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ darkMode }) => {
       />
       <div
         ref={dotRef}
-        className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none transition-colors duration-150 ${
+        className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none transition-[transform,background-color,box-shadow] duration-150 ease-out ${
           isHovered
             ? 'bg-emerald-400 ring-4 ring-emerald-400/30'
             : isClicked
